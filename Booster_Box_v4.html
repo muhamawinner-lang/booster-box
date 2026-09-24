@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Booster Box</title>
+<style>
+*{box-sizing:border-box} body{margin:0;font-family:Arial,sans-serif;background:#05051a;color:white;overflow-x:hidden}
+body:before{content:"";position:fixed;inset:0;background:radial-gradient(circle at 50% 10%,#3512a8 0,transparent 35%),radial-gradient(circle at 10% 80%,#061d66 0,transparent 30%);z-index:-1}
+header{display:flex;justify-content:space-between;align-items:center;padding:18px 7%;border-bottom:1px solid #302070;backdrop-filter:blur(12px);position:sticky;top:0;background:#05051acc;z-index:5}
+.logo{font-size:25px;font-weight:900;color:#38c8ff;text-shadow:0 0 14px #7b00ff}.logo span{color:white}
+nav a{color:#ddd;text-decoration:none;margin-left:20px;font-size:14px}
+.hero{min-height:82vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:55px 20px}
+.badge{display:inline-block;border:1px solid #8b35ff;border-radius:30px;padding:9px 16px;color:#d9b8ff;background:#721cff22}
+h1{font-size:clamp(46px,9vw,90px);line-height:.95;margin:22px 0 15px;text-shadow:0 0 25px #9a00ff}
+h1 span{color:#25cfff}.hero p{max-width:650px;margin:0 auto 30px;color:#c9c7dd;font-size:18px;line-height:1.6}
+.btn{border:0;border-radius:30px;padding:15px 28px;color:white;font-weight:800;cursor:pointer;font-size:16px;background:linear-gradient(90deg,#5125ff,#ec0cff);box-shadow:0 0 25px #7b18ff88}
+.btn.secondary{background:#101735;border:1px solid #704cff;margin-left:10px}
+section{padding:70px 7%}.title{text-align:center;font-size:34px;margin-bottom:35px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:18px;max-width:1050px;margin:auto}
+.card{background:#0c1030cc;border:1px solid #443b9b;border-radius:22px;padding:25px;box-shadow:0 0 25px #1b0b55}.icon{font-size:40px}.card h3{margin:12px 0 8px}.card p{color:#aaa9c2;line-height:1.5;font-size:14px}
+.panel{max-width:900px;margin:auto;background:#090d28;border:1px solid #493aa1;border-radius:30px;padding:28px;box-shadow:0 0 40px #2b08a555}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.step{padding:20px;background:#11163b;border-radius:18px}.step b{color:#39d5ff}
+footer{text-align:center;padding:35px;color:#777;border-top:1px solid #211957}
+.modal{display:none;position:fixed;inset:0;background:#000b;align-items:center;justify-content:center;z-index:10;padding:20px}.modal.show{display:flex}.modalbox{max-width:430px;width:100%;background:#0b1030;border:1px solid #743cff;border-radius:25px;padding:30px;box-shadow:0 0 50px #641cff88}.close{float:right;cursor:pointer;color:#aaa}
+input{width:100%;padding:14px;margin:8px 0;background:#070a20;border:1px solid #3b327c;border-radius:12px;color:white}
+@media(max-width:700px){nav{display:none}.steps{grid-template-columns:1fr}.btn.secondary{margin:10px 0 0}}
+</style>
+</head>
+<body>
+<header><div class="logo">◈ <span>BOOSTER</span> BOX</div><nav><a href="#fonctions">Fonctions</a><a href="#comment">Comment ça marche</a><a href="#contact">Contact</a></nav></header>
+
+
+<div id="appNav" style="display:none;position:sticky;top:72px;z-index:4;background:#070a20ee;border-bottom:1px solid #302070;padding:12px 7%;text-align:center">
+  <button class="btn secondary" onclick="showPanel('dashboard')">🏠 Accueil</button>
+  <button class="btn secondary" onclick="showPanel('creator')">🎵 Chansons</button>
+  <button class="btn secondary" onclick="showPanel('boostPanel')">🚀 Boost</button>
+  <button class="btn secondary" onclick="showPanel('socialPanel')">📱 Réseaux</button>
+  <button class="btn secondary" onclick="showPanel('profilePanel')">👤 Profil</button>
+</div>
+
+<main>
+<section class="hero">
+<div>
+<div class="badge">🎵 Crée • 🚀 Booste • 📈 Grandis</div>
+<h1>BOOSTER<br><span>BOX</span></h1>
+<p>Ta musique, tes publications et tes comptes au niveau supérieur. Crée tes chansons et prépare tes contenus depuis un seul espace.</p>
+<button class="btn" onclick="openModal()">Commencer</button>
+<button class="btn secondary" onclick="document.querySelector('#fonctions').scrollIntoView({behavior:'smooth'})">Découvrir</button>
+</div>
+</section>
+
+<section id="fonctions">
+<h2 class="title">Tout ce qu'il te faut</h2>
+<div class="cards">
+<div class="card"><div class="icon">🎵</div><h3>Créer une chanson</h3><p>Choisis un style, écris tes paroles et prépare ton morceau.</p></div>
+<div class="card"><div class="icon">🚀</div><h3>Booster une publication</h3><p>Prépare tes campagnes pour tes contenus sociaux.</p></div>
+<div class="card"><div class="icon">📱</div><h3>Réseaux sociaux</h3><p>Facebook, TikTok, Instagram et YouTube réunis au même endroit.</p></div>
+<div class="card"><div class="icon">📚</div><h3>Mes chansons</h3><p>Retrouve tes créations et leurs aperçus depuis ton espace.</p></div>
+</div>
+</section>
+
+<section id="comment">
+<div class="panel">
+<h2 class="title">Comment ça marche ?</h2>
+<div class="steps">
+<div class="step"><b>01</b><h3>Crée ton compte</h3><p>Inscris-toi pour accéder à ton espace.</p></div>
+<div class="step"><b>02</b><h3>Crée ou booste</h3><p>Choisis l'outil dont tu as besoin.</p></div>
+<div class="step"><b>03</b><h3>Développe ton projet</h3><p>Gère tes créations et tes campagnes.</p></div>
+</div>
+</div>
+</section>
+</main>
+
+
+
+
+<section id="boostPanel" style="display:none">
+  <div class="panel">
+    <h2 class="title">🚀 Booster une publication</h2>
+    <input id="boostContent" placeholder="Lien ou description de ta publication">
+    <input id="boostBudget" type="number" placeholder="Budget de test">
+    <button class="btn" onclick="saveBoost()">Préparer le boost</button>
+    <div id="boostResult" style="margin-top:20px;color:#c9c7dd"></div>
+  </div>
+</section>
+
+<section id="socialPanel" style="display:none">
+  <div class="panel">
+    <h2 class="title">📱 Mes réseaux sociaux</h2>
+    <div class="cards">
+      <div class="card"><div class="icon">📘</div><h3>Facebook</h3><p>Préparer tes publications.</p><button class="btn secondary" onclick="connectSocial('Facebook')">Connecter</button></div>
+      <div class="card"><div class="icon">🎵</div><h3>TikTok</h3><p>Préparer tes contenus vidéo.</p><button class="btn secondary" onclick="connectSocial('TikTok')">Connecter</button></div>
+      <div class="card"><div class="icon">📸</div><h3>Instagram</h3><p>Préparer tes publications.</p><button class="btn secondary" onclick="connectSocial('Instagram')">Connecter</button></div>
+      <div class="card"><div class="icon">▶️</div><h3>YouTube</h3><p>Préparer tes vidéos.</p><button class="btn secondary" onclick="connectSocial('YouTube')">Connecter</button></div>
+    </div>
+  </div>
+</section>
+
+<section id="profilePanel" style="display:none">
+  <div class="panel">
+    <h2 class="title">👤 Mon profil</h2>
+    <p id="profileEmail" style="text-align:center;color:#c9c7dd"></p>
+    <p id="profileStats" style="text-align:center;color:#aaa9c2"></p>
+  </div>
+</section>
+
+<section id="creator" style="display:none">
+  <div class="panel">
+    <h2 class="title">🎵 Créateur de chanson</h2>
+    <input id="songTitle" placeholder="Titre de la chanson">
+    <input id="songStyle" placeholder="Style musical (Afrobeat, Gospel, Rap...)">
+    <textarea id="songLyrics" placeholder="Écris tes paroles ici..." style="width:100%;min-height:150px;padding:14px;margin:8px 0;background:#070a20;border:1px solid #3b327c;border-radius:12px;color:white"></textarea>
+    <button class="btn" onclick="saveSong()">Enregistrer la chanson</button>
+    <button class="btn secondary" onclick="closeCreator()">Retour</button>
+    <div id="songResult" style="margin-top:20px;color:#c9c7dd"></div>
+  </div>
+</section>
+
+<section id="dashboard" style="display:none">
+  <div class="panel">
+    <h2 class="title">Mon espace Booster Box</h2>
+    <p id="welcome" style="text-align:center;color:#c9c7dd"></p>
+    <div class="cards">
+      <div class="card"><div class="icon">🎵</div><h3>Créer une chanson</h3><p>Prépare une nouvelle création musicale.</p><button class="btn" onclick="createSong()">Nouvelle chanson</button></div>
+      <div class="card"><div class="icon">🚀</div><h3>Booster une publication</h3><p>Prépare une campagne pour ton contenu.</p><button class="btn" onclick="boostPost()">Nouveau boost</button></div>
+      <div class="card"><div class="icon">📚</div><h3>Mes créations</h3><p id="creationCount">0 création</p></div>
+      <div class="card"><div class="icon">🔐</div><h3>Mon compte</h3><button class="btn secondary" onclick="logout()">Se déconnecter</button></div>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">© 2026 Booster Box — Crée • Booste • Grandis</footer>
+
+<div class="modal" id="modal"><div class="modalbox"><span class="close" onclick="closeModal()">✕</span><h2>Bienvenue sur Booster Box</h2><p>Prototype local — les données sont enregistrées dans ton navigateur pour cet essai.</p><input id="loginEmail" placeholder="E-mail ou numéro de téléphone">
+<input id="loginPassword" type="password" placeholder="Mot de passe">
+<button class="btn" style="width:100%;margin-top:12px" onclick="loginUser()">Se connecter</button>
+<p style="text-align:center;color:#aaa9c2;font-size:13px;margin-top:14px">Pas encore de compte ? <button onclick="registerUser()" style="background:none;border:0;color:#39d5ff;cursor:pointer">Créer un compte</button></p></div></div>
+<script>
+function openModal(){document.getElementById('modal').classList.add('show')}
+function closeModal(){document.getElementById('modal').classList.remove('show')}
+
+function registerUser(){
+  const email=document.getElementById('loginEmail').value.trim();
+  const password=document.getElementById('loginPassword').value;
+  if(!email || !password){alert('Entre ton e-mail/téléphone et un mot de passe.');return}
+  localStorage.setItem('boosterUser',JSON.stringify({email:email,password:password,creations:0}));
+  alert('Compte créé. Tu peux maintenant te connecter.');
+}
+
+function loginUser(){
+  const email=document.getElementById('loginEmail').value.trim();
+  const password=document.getElementById('loginPassword').value;
+  const user=JSON.parse(localStorage.getItem('boosterUser')||'null');
+  if(!user || user.email!==email || user.password!==password){
+    alert('Compte introuvable ou mot de passe incorrect.');
+    return;
+  }
+  localStorage.setItem('boosterLoggedIn','true');
+  closeModal();
+  showDashboard(user);
+}
+
+function showDashboard(user){
+  document.getElementById('appNav').style.display='block';
+  document.getElementById('dashboard').style.display='block';
+  document.getElementById('welcome').textContent='Bienvenue, '+user.email+' 👋';
+  document.getElementById('creationCount').textContent=(user.creations||0)+' création'+((user.creations||0)>1?'s':'');
+  document.getElementById('dashboard').scrollIntoView({behavior:'smooth'});
+}
+
+function createSong(){
+  const user=JSON.parse(localStorage.getItem('boosterUser')||'null');
+  if(!user){openModal();return}
+  document.getElementById('dashboard').style.display='none';
+  document.getElementById('creator').style.display='block';
+  document.getElementById('creator').scrollIntoView({behavior:'smooth'});
+}
+
+function saveSong(){
+  const title=document.getElementById('songTitle').value.trim();
+  const style=document.getElementById('songStyle').value.trim();
+  const lyrics=document.getElementById('songLyrics').value.trim();
+  if(!title || !style || !lyrics){
+    alert('Remplis le titre, le style et les paroles.');
+    return;
+  }
+  const user=JSON.parse(localStorage.getItem('boosterUser')||'null');
+  user.creations=(user.creations||0)+1;
+  user.lastSong={title:title,style:style,lyrics:lyrics};
+  localStorage.setItem('boosterUser',JSON.stringify(user));
+  document.getElementById('songResult').innerHTML='<b>✅ Chanson enregistrée :</b> '+title+' — '+style;
+  document.getElementById('creationCount').textContent=user.creations+' création'+(user.creations>1?'s':'');
+}
+
+function closeCreator(){
+  document.getElementById('creator').style.display='none';
+  document.getElementById('dashboard').style.display='block';
+  document.getElementById('dashboard').scrollIntoView({behavior:'smooth'});
+}
+
+function boostPost(){
+  alert('Module de boost ouvert dans le prototype. La connexion réelle aux plateformes sera ajoutée ensuite.');
+}
+
+
+function showPanel(id){
+  ['dashboard','creator','boostPanel','socialPanel','profilePanel'].forEach(x=>{
+    const el=document.getElementById(x);
+    if(el) el.style.display=(x===id?'block':'none');
+  });
+  if(id==='profilePanel'){
+    const user=JSON.parse(localStorage.getItem('boosterUser')||'null');
+    if(user){
+      document.getElementById('profileEmail').textContent='Compte : '+user.email;
+      document.getElementById('profileStats').textContent=(user.creations||0)+' création(s) enregistrée(s)';
+    }
+  }
+  document.getElementById(id).scrollIntoView({behavior:'smooth'});
+}
+
+function saveBoost(){
+  const content=document.getElementById('boostContent').value.trim();
+  const budget=document.getElementById('boostBudget').value;
+  if(!content){alert('Ajoute une publication ou un lien.');return}
+  document.getElementById('boostResult').innerHTML='✅ Campagne préparée'+(budget?' avec un budget de '+budget:'')+'.';
+}
+
+function connectSocial(name){
+  alert(name+' : la connexion officielle à la plateforme sera ajoutée dans la prochaine étape.');
+}
+
+function logout(){
+  localStorage.removeItem('boosterLoggedIn');
+  document.getElementById('appNav').style.display='none';
+  document.getElementById('dashboard').style.display='none';
+  alert('Tu es déconnecté.');
+}
+
+window.addEventListener('load',()=>{
+  const user=JSON.parse(localStorage.getItem('boosterUser')||'null');
+  if(user && localStorage.getItem('boosterLoggedIn')==='true') showDashboard(user);
+});
+</script>
+</body>
+</html>
